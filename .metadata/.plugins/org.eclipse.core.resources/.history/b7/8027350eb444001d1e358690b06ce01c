@@ -1,0 +1,12 @@
+package ch09;
+
+public class NoteBook extends Computer{
+
+	@Override
+	public void display() {
+		System.out.println("NoteBook display");
+		
+	}
+
+
+}

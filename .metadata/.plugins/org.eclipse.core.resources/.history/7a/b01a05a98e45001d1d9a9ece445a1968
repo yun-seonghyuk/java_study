@@ -1,0 +1,10 @@
+package board2;
+
+public class Main {
+	static int index =-1;
+	public static void main(String[] args) {
+		Controller controller = new Controller();
+		controller.init();
+		
+	}
+}

@@ -1,0 +1,7 @@
+package ch15;
+
+public class ch16 {
+
+	private playerLevel level;
+	
+}

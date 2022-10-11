@@ -1,0 +1,20 @@
+package ch11;
+
+public class CompleteCalc extends Calculator{
+
+	@Override
+	public int times(int num1, int num2) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int divide(int num1, int num2) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	public void showInfo() {
+		System.out.println("모두 구현했습니다.");
+	}
+}

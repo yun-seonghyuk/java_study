@@ -1,0 +1,11 @@
+package chapter10.question;
+
+import chapter10.question.controller.Controller;
+
+public class Main {
+
+	public static void main(String[] args) {
+		new Controller();
+	}
+
+}

@@ -1,0 +1,64 @@
+package board2;
+
+import java.util.Scanner;
+
+public class BoardController {
+	static public BoardController instance = new BoardController();
+	private Scanner scan = new Scanner(System.in);
+	
+
+	public void viewPosts(boolean check) {
+		check = BoardDAO.instance.viewPostsCheck();
+		if(check == false) {
+			System.out.println("게시물이 없습니다.");
+			System.out.println("==================");
+		}else{
+			BoardDAO.instance.viewPrt();
+		}
+	}
+	
+	
+	public void writing(Member memberlog) {
+		System.out.println("제목 입력 : ");
+		String title = scan.next();
+
+		System.out.println("글 내용 입력 : ");
+		String content = scan.next();
+		
+		Board member = new Board(title,memberlog.getId(),content);
+		BoardDAO.instance.insertBoard(member);
+		System.out.println("게시글 작성완료");
+		System.out.println("==================");
+		
+	}
+	
+	public void update() {
+		System.out.println("수정할 게시글번호 : ");
+		int index = -1;
+		
+		index = BoardDAO.instance.boardNumCheck(index);
+		if(index == -1) {
+			System.out.println("번호가 맞지 않습니다.");
+		}else {
+			System.out.println("수정할 글 입력 : ");
+			String content = scan.next();
+			Board board = BoardDAO.instance.updateBoardGetContent(index,content);
+			//board.setContent(content);
+//			BoardDAO.instance.boardList.get(index).setContent(content);
+			System.out.println("수정완료.");
+		}
+	}
+	public void delete() {
+		System.out.println("게시글 번호입력 : ");
+		int index = -1;
+		index = BoardDAO.instance.boardNumCheck(index);
+		if(index == -1) {
+			System.out.println("번호가 맞지 않습니다.");
+		}else {
+			BoardDAO.instance.removeBoard(index);
+			System.out.println("게시글이 삭제되었습니다.");
+		}
+		System.out.println("==================");
+	
+	}
+}

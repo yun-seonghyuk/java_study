@@ -1,0 +1,15 @@
+package ch09;
+
+public class Computer {
+
+	void display();
+	void typing();
+	
+	void turnOn() {
+		System.out.println("전원을 킵니다.");
+	}
+	
+	void turnOff() {
+		System.out.println("전원을 끕니다.");
+	}
+}

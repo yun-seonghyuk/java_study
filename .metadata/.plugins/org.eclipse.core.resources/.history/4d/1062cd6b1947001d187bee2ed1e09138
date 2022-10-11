@@ -1,0 +1,59 @@
+package chapter10.question.controller;
+
+import chapter10.question.dao.Dao;
+import chapter10.question.dto.Member;
+import chapter10.question.dto.Task;
+import chapter10.question.view.View;
+
+public class Controller {// 메인 로직을 담당할 클래스
+	
+	private Dao dao = Dao.getInstance();  // 싱글턴으로 만들어진 객체를 가져다 쓰겠다.
+	
+	public Controller() {
+		main();
+	}
+
+	private void main() {
+		while(true) {
+			int num = View.mainMenu();
+			Member member = null;
+			
+			switch(num) {
+			case 1:// 회원 가입
+				member = View.signup();
+				if(member==null) {
+					View.selectError();
+				}else {
+					dao.insertMember(member);
+				}
+				break;
+			case 2:// 로그인
+				String[] loginInfo = View.signin();
+				
+				member = dao.checkMember(loginInfo);
+
+				if(member==null) {
+					View.selectError();
+				}else {
+					task(member);
+				}
+				break;
+			case 3:// 프로그램 종료
+				if(!View.selectExit()) {
+					return;
+				}else {
+					break;
+				}
+			default:
+				View.selectError();
+			}
+			
+		}
+	}
+
+	private void task(Task task) {
+		task.work();
+		task.test();
+	}
+
+}

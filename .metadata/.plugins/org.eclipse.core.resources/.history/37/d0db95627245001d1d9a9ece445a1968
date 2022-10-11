@@ -1,0 +1,91 @@
+package board2;
+
+import java.util.Scanner;
+
+
+public class MemberDAO {
+	int max;
+	Member[]memberList;
+	int memberCount;
+	Scanner scan = new Scanner(System.in);
+	public void init(int size) {
+		max = size;
+		memberList = new Member[max];
+		memberCount = 0;
+		
+	}
+	public Member login() {
+		System.out.println("로그인 아이디 : ");
+		String id = scan.next();
+		System.out.println("로그인 비밀번호 : ");
+		String pw =scan.next();
+	
+		boolean check = checkMemberIdAndPw(id, pw);
+		
+		if(check == true) {
+			return getMember(id);
+		}else {
+			System.out.println("아이디와 비밀번호가 맞지않습니다.");
+			return null;
+		}
+		
+	}
+	Member getMember(String id) {
+		Member member = null;
+		for(int i = 0; i < memberCount; i++) {
+			if(memberList[i].getId().equals(id)) {
+				member = memberList[i];
+				break;
+			}
+		}
+		return member;
+	}
+	boolean checkMemberIdAndPw(String id , String pw) {
+		for(int i = 0; i < memberCount; i++) {
+			if(memberList[i].getId().equals(id) &&
+					memberList[i].getPw().equals(pw)) {
+				return true;
+			}
+		}		
+		return false;
+	}
+	public void join() {
+		System.out.println("회원가입 아이디 입력 : ");
+		String id = scan.next();
+		boolean result = checkMemberID(id);
+		
+		if(result == true) {
+			System.out.println("아이디 중복");
+		}else {
+			System.out.println("비밀번호 입력 : ");
+			String pw = scan.next();
+			System.out.println("이름 입력 : ");
+			String name = scan.next();
+			Member member = new Member(id,pw,name);
+			memberList[memberCount] = member;
+			memberCount+=1;
+			System.out.println("회원가입을 축하합니다.");
+			
+		}
+		
+	}
+	public boolean checkMemberID(String id) {
+		for(int i = 0; i < memberCount; i++) {
+			if(memberList[i].getId().equals(id)) {
+				return true;
+			}
+		}
+		return false;
+	}
+	public Member logout(Member memberlog) {
+		
+		if(memberlog == null) {
+			System.out.println();
+			return memberlog;
+		}else {
+			return memberlog;
+		}
+		
+		
+	}
+}

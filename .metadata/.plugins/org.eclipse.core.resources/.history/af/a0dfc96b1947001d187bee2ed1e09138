@@ -1,0 +1,82 @@
+package chapter10.question.view;
+
+import java.util.Scanner;
+
+import chapter10.question.dto.Member;
+import chapter10.question.dto.Student;
+import chapter10.question.dto.Teacher;
+
+public class View {// 콘솔을 이용한 입,출력
+	private static Scanner scan = new Scanner(System.in);
+
+	public static int mainMenu() {
+		System.out.println("***********************************");	
+		System.out.println("그린 학사 정보 관리 시스템");
+		System.out.println("메뉴를 선택해주세요.");
+		System.out.println("1. 회원 가입");
+		System.out.println("2. 로그인");
+		System.out.println("3. 프로그램 종료");
+		System.out.print("선택 >>");
+		
+		int selectNum = Integer.parseInt(scan.nextLine());
+		
+		return selectNum;
+	}
+
+	public static void selectError() {
+		System.out.println("잘못 입력했습니다. ");
+		System.out.println("다시 확인해주세요. ");
+	}
+
+	public static boolean selectExit() {
+		System.out.println("종료하시겠습니까?(Y/N)");
+		String selExit = scan.nextLine();
+		if(selExit.equalsIgnoreCase("y")) {
+			System.out.println("프로그램을 종료합니다."); 
+			return false;
+		}else {
+			return true;
+		}	
+	}
+
+	public static Member signup() {//회원 가입
+		Member member= null;
+		
+		System.out.println("회원 가입을 시작합니다.");
+		System.out.println("아이디를 입력하세요.");
+		String memberId = scan.nextLine();
+		System.out.println("비밀번호를 입력하세요.");
+		String memberPassword = scan.nextLine();
+		System.out.println("이름를 입력하세요.");
+		String memberName = scan.nextLine();
+		System.out.println("1.선생 | 2. 학생");
+		String position = scan.nextLine();
+		
+		if(position.equals("1")) {
+			System.out.println("담당 과목을 입력하세요.");
+			String subject = scan.nextLine();
+			member = new Teacher(memberId,memberPassword,memberName,subject);
+			
+		}else if(position.equals("2")){
+			System.out.println("전공을 입력하세요.");
+			String major = scan.nextLine();
+			member = new Student(memberId,memberPassword,memberName,major);
+		}
+	
+		return member;
+	}
+
+	public static String[] signin() {
+		// 로그인
+		String[] loginInfo = new String[2];
+		System.out.println("로그인을 시작합니다.");
+		System.out.println("아이디를 입력하세요.");
+		loginInfo[0] = scan.nextLine();
+		System.out.println("비밀번호를 입력하세요.");
+		loginInfo[1] = scan.nextLine();
+		
+		return loginInfo;
+	}
+	
+	
+}

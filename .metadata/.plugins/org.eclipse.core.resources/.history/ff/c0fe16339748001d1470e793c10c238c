@@ -1,0 +1,38 @@
+package board2;
+
+import java.util.Scanner;
+
+public class BoardController {
+	static public BoardController instance = new BoardController();
+	private Scanner scan = new Scanner(System.in);
+	
+	
+	public void update() {
+		System.out.println("수정할 게시글번호 : ");
+		int index = -1;
+		
+		index = BoardDAO.instance.boardNumCheck(index);
+		if(index == -1) {
+			System.out.println("번호가 맞지 않습니다.");
+		}else {
+			System.out.println("수정할 글 입력 : ");
+			String content = scan.next();
+			boardList[index].setContent(content);
+			System.out.println("수정완료.");
+		}
+	}
+	
+	public void delete() {
+		System.out.println("게시글 번호입력 : ");
+		int index = -1;
+		index = BoardDAO.instance.boardNumCheck(index);
+		if(index == -1) {
+			System.out.println("번호가 맞지 않습니다.");
+		}else {
+			
+			System.out.println("게시글이 삭제되었습니다.");
+		}
+		System.out.println("==================");
+	
+	}
+}

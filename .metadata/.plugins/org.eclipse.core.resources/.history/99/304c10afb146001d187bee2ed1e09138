@@ -1,0 +1,13 @@
+package ch10;
+
+public class ch10 {
+	
+	
+	public abstract void drive();
+	public abstract void stop();
+	
+	public void starCar() {
+		System.out.println("시동을 켭니다.");
+	}
+	
+}

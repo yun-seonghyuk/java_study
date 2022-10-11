@@ -1,0 +1,45 @@
+package chapter10.question.dao;
+
+import chapter10.question.dto.Member;
+
+public class Dao {// Data Access Object  데이터를 DB에 전달할 목적으로 작동되는 클래스
+	// 데이터 저장용 배열을 가진 클래스
+	// 외부로부터 데이터를 꺼내고 받을 기능(메서드)
+	// 싱글턴
+	
+	private Dao() {}
+	private static Dao dao = new Dao();
+	public static Dao getInstance() {
+		return dao;
+	}
+	//-----------------------------------------------------------------
+	private Member[] members = new Member[100];
+	
+	public void insertMember(Member member) {
+		// 전달 받은 멤버 객체를 저장
+		for(int i=0;i<members.length;i++) {
+			if(members[i]==null) {
+				members[i] = member;
+				break;
+			}
+		}
+	}
+
+	public Member checkMember(String[] loginInfo) {
+
+		for(int i=0;i<members.length;i++) {
+			if(members[i]!=null) {
+				if(members[i].getMemberId().equals(loginInfo[0])&&
+					members[i].getMemberPassword().equals(loginInfo[1])) {
+					return members[i];
+				}
+			}
+		}
+		return null;
+	}
+	
+	
+	
+	
+	
+}

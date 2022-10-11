@@ -1,0 +1,5 @@
+package M4_콜렉션종류_프로젝트_RPG;
+
+interface Skill {
+	public void skill(Unit unit);
+}

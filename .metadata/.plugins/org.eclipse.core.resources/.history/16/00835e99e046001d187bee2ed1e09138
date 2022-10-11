@@ -1,0 +1,25 @@
+package M4_콜렉션종류_프로젝트_RPG;
+
+public class StageTitle implements Stage{
+	@Override
+	public void init() {
+		System.out.println("[�޼���] Ÿ��Ʋ�� �����մϴ�.");
+	}
+
+	@Override
+	public boolean update() {
+		System.out.println("=====[Ÿ��Ʋ]=====");
+		System.out.println("[0.����][1.����]");
+		int select = GameManager.instance.scan.nextInt();
+		if(select == 1) {
+			GameManager.instance.changeStage("Lobby");			
+			return false;
+		}else if(select == 0){
+			GameManager.instance.changeStage("");	
+			return false;
+		}
+		
+		return true;
+	}
+
+}

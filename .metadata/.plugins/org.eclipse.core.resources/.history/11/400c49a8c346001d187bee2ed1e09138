@@ -1,0 +1,29 @@
+package K6_컨트롤러심화_프로젝트1_멤버;
+
+import java.util.Scanner;
+
+public class Controller {
+	
+	static public Controller instance = new Controller();	
+	private Scanner scan = new Scanner(System.in);
+	
+	
+	public void memberMenu() {
+		while(true) {
+			System.out.println("[1]추가 [2]삭제 [3]수정 [4]출력  [0]종료");
+			int sel = scan.nextInt();
+			if(sel == 0) {
+				break;
+			}else if(sel == 1) {			
+				MemberController.instance.join();
+			}else if(sel == 2) {
+				MemberController.instance.delete();
+			}else if(sel == 3) {
+				MemberController.instance.update();
+			}else if(sel == 4) {
+				MemberController.instance.printAll();
+			}
+		}
+		
+	}
+}

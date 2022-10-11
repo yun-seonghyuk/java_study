@@ -1,0 +1,10 @@
+package K6_컨트롤러심화_프로젝트1_멤버;
+
+public class _MemberMain {
+	public static void main(String[] args) {
+		
+		MemberDAO.instance.init();
+		Controller.instance.memberMenu();
+		
+	}
+}

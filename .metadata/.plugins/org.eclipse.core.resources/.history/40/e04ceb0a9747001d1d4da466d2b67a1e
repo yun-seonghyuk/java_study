@@ -1,0 +1,17 @@
+package ch16_2;
+
+public class LeastJob implements Scheduler {
+
+	@Override
+	public void getNextCall() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void sendCallToAgent() {
+		// TODO Auto-generated method stub
+
+	}
+
+}

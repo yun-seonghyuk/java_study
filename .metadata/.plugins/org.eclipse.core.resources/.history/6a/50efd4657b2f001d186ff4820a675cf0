@@ -1,0 +1,81 @@
+package ex01;
+
+public class Ex01 {
+
+	public static void main(String[] args) {
+		// 자바 점수 50, 자바스크립트 점수 60를 변수에 저장
+		
+		int javajumsu = 50;
+		int jsjumsu;   // 변수의 선언
+		jsjumsu = 60;  // 변수에 최초로 데이터를 넣는 작업 => 초기화
+		
+		System.out.println("자바 점수 : "+javajumsu);
+		System.out.println("자바스크립트 점수 : "+jsjumsu);
+		
+		// 변수에는 반드시 하나의 데이터만 넣을 수 있다.
+		javajumsu = 70;
+		System.out.println("자바 점수 : "+javajumsu);
+		//---------------------------------------------
+		// 자료형(type) :  변수에 들어갈 데이터의 정체를 알려주는 태그
+		//     	- 기본 자료형 : 8개
+		//				숫자
+		//					- 정수 : byte(1), short(2), [int(4)], long(8)
+		//					- 실수 : float(4), [double(8)]
+		//				문자 : char (2byte)
+		//				논리 : [boolean(1)]
+		// 		- 참조 자료형 : 기본자료형외 전부
+		
+		byte aa = 10;
+		short aaa = 20;
+		int aaaa = 30;
+		long aaaaa = 9999999999l;
+		
+		float aaaaaa = 50.0f;
+		double aaaaaaa = 60.0;
+		
+		char aaaaaaa1 = 'a';
+		char aaaaaaa2 = '꾑';
+//		char aaaaaaa3 = "꾑꾑";
+		String aaaaaaa4 = "꾑꾑";  //문자열을 저장하기 위한 타입
+		
+		boolean aaaaaaaa1 = true;
+		boolean aaaaaaaa2 = false;
+		
+		//-------------------------------------------------------
+		// 형변환(casting) 
+		
+		int z1 = 10;
+//		short z2 = z1;
+		long z3 = z1;
+		
+		//  형변환   [그릇의 크기]
+		//     - 묵시적(자동 형변환)
+		byte a1 = 10;
+		short a2 = a1;
+		int a3 = a2;
+		long a4 = a3;
+		float a5 = a4;
+		double a6 = a5;
+		
+		//     - 명시적(강제 형변환)	
+		double b1 = 10.0;
+		float b2 = (float)b1;
+		long b3 = (long)b2;
+		int b4 = (int)b3;
+		short b5 = (short)b4;
+		byte b6 = (byte)b5;
+		
+		//--------------------
+		int c1 = 200;
+		byte c2 = (byte)c1;
+		
+		System.out.println("넘쳐버린 c2 : "+c2);
+		//----------------------------
+		char d1 = 'a';
+	//	short d2 = d1;  //형변환 X
+		int d3 = d1;    // 형변환 O
+		
+	//	System.out.println("숫자 출력 : "+num);
+	}
+
+}

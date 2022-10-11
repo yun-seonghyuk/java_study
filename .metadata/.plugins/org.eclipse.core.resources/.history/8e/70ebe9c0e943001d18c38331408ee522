@@ -1,0 +1,23 @@
+package ch03;
+
+public class CustomerTest {
+
+	public static void main(String[] args) {
+		Customer customerLee = new Customer(10010, "이순신");
+		customerLee.bonusPoint= 1000;
+		int price = customerLee.calcPrice(1000);
+		System.out.println(customerLee.showCustomerInfo()+price);
+		
+		VIPCustomer customerKim = new VIPCustomer(10020, "김유신");
+		customerKim.bonusPoint= 10000;
+		price = customerKim.calcPrice(1000);
+		System.out.println(customerKim.showCustomerInfo()+price);
+		//하위클래스가 생성될때 무조건 상위클래스부터 생성되고 하위 클래스가 생성된다.
+		// 상위클래스 생성자가 메게변수를 줬을때 super와같이한다.
+		
+		Customer vc = new VIPCustomer(12345, "no-name");
+		
+		vc.calcPrice(1000);
+		
+	}
+}

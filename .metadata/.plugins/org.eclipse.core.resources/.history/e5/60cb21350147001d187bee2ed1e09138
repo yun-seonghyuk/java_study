@@ -1,0 +1,21 @@
+package ch15;
+
+public class Costomer implements Buy, Sell{
+
+	@Override
+	public void sell() {
+		System.out.println("customer sell");
+	}
+
+	@Override
+	public void buy() {
+		System.out.println("costomer buy");
+	}
+
+	@Override
+	public void order() {
+		System.out.println("customer order");
+	}
+
+
+}

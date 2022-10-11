@@ -1,0 +1,6 @@
+package chapter10.question.dto;
+
+public interface Task {
+	public void work();
+	public void test();
+}

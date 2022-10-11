@@ -1,0 +1,6 @@
+package M4_콜렉션종류_프로젝트_RPG;
+
+interface  Stage {
+	public void init();
+	public boolean update();
+}

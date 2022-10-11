@@ -1,0 +1,72 @@
+package K6_컨트롤러심화_프로젝트1_멤버;
+
+import java.util.Vector;
+
+public class MemberDAO {
+	static public MemberDAO instance = new MemberDAO();	
+	private Vector<Member> memberList;
+	
+	public void init() {
+		memberList = new Vector<Member>();
+	}
+	
+	public void insertMember(Member member) {
+		memberList.add(member);
+	}
+	
+	public boolean checkMemberId(String id) {
+		for(int i = 0; i < memberList.size(); i++) {
+			Member member = memberList.get(i);
+			if(member.getId().equals(id)) {
+				return true;
+			}
+		}		
+		return false;
+	}
+	public boolean checkMemberIdAndPw(String id , String pw) {
+		for(int i = 0; i < memberList.size(); i++) {
+			Member member = memberList.get(i);
+			if(member.getId().equals(id) &&
+					member.getPw().equals(pw)) {
+				return true;
+			}
+		}		
+		return false;
+	}
+	public void updateMember(int index , Member member) {
+		memberList.set(index, member);
+	}
+	public int getMemberIndex(String id) {
+		int index = 0;
+		for(int i = 0; i < memberList.size(); i++) {
+			Member member = memberList.get(i);
+			if(member.getId().equals(id)) {
+				index = i;
+				break;
+			}
+		}
+		return index;
+	}
+	public void removeMember(int index) {
+		
+		memberList.remove(index);
+		
+	}
+	
+	public Member getMember(String id) {
+		Member member = null;
+		for(int i = 0; i < memberList.size(); i++) {
+			member = memberList.get(i);
+			if(member.getId().equals(id)) {
+				break;
+			}
+		}
+		return member;
+	}
+	public void printMemberList() {
+		for(int i = 0; i < memberList.size(); i++) {
+			Member member = memberList.get(i);
+			member.printMember();
+		}
+	}
+}

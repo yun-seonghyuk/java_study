@@ -1,0 +1,46 @@
+package board2;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+
+public class MemberDAO {
+	static public MemberDAO instance = new MemberDAO();
+	Scanner scan = new Scanner(System.in);
+	private ArrayList<Member> memberList;
+	
+	public void init() {
+		memberList = new ArrayList<Member>();
+	}
+	public void insertMember(Member member) {
+		memberList.add(member);
+	}
+
+	public Member getMember(String id) {
+		Member member = null;
+		for(int i = 0; i < memberList.size(); i++) {
+			if(memberList.get(i).getId().equals(id)) {
+				member = memberList.get(i);
+				break;
+			}
+		}
+		return member;
+	}
+	public boolean checkMemberIdAndPw(String id , String pw) {
+		for(int i = 0; i < memberList.size(); i++) {
+			if(memberList.get(i).getId().equals(id) &&
+					memberList.get(i).getPw().equals(pw)) {
+				return true;
+			}
+		}		
+		return false;
+	}
+	public boolean checkMemberID(String id) {
+		for(int i = 0; i <  memberList.size(); i++) {
+			if(memberList.get(i).getId().equals(id)) {
+				return true;
+			}
+		}
+		return false;
+	}
+}

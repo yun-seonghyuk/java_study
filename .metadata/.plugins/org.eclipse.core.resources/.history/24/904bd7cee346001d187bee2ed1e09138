@@ -1,0 +1,59 @@
+package S4_Cart;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+import S0_MALL.MallController;
+import S0_MALL._Main;
+import S2_Item.Item;
+
+public class CartController {
+	private CartController() {}
+	static private CartController instance = new CartController();
+	static public CartController getInstance() {
+		return instance;
+	}
+	
+	private CartDAO cartDAO;
+	private MallController mallController;
+	private Scanner scan;	
+	
+	public void init(CartDAO cartDAO) {
+		this.cartDAO = cartDAO;
+		mallController = MallController.getInstance();
+		scan = _Main.scan;
+	}
+	
+	public void insertCart(Item item) {
+		Cart cart = new Cart();
+		cart.setNumber(cartDAO.getCartNumber());
+		cart.setMemberID(mallController.getMemberLoginID());
+		cart.setItemName(item.getItemName());
+		cart.setItemPrice(item.getPrice());
+		cartDAO.insertCart(cart);
+	}
+	
+	public void menuCart() {
+		
+		while(true) {
+			System.out.println("===[장바구니관리]===");
+			System.out.println("1)장바구니출력 2)구입 3)삭제 0)뒤로가기");
+			int sel = scan.nextInt();
+			if(sel == 0) {
+				break;
+			}
+			else if(sel == 1) {
+				ArrayList<Cart> oneCartList = 
+						cartDAO.getOneCartList(mallController.getMemberLoginID());
+				cartDAO.printOneCartList(oneCartList);
+			}
+		}
+	}
+	
+	public void printAllCartList() {
+		cartDAO.printAllCartList();
+	}
+	
+	
+	
+}

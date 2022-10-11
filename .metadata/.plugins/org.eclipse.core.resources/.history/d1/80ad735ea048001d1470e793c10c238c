@@ -1,0 +1,86 @@
+package board2;
+
+import java.util.Scanner;
+
+public class Controller {
+	static public Member memberlog = null;
+	static public Controller instance = new Controller();
+
+	private Scanner scan = new Scanner(System.in);
+	
+	public void mainMenu() {
+		while(true) {
+			System.out.println("=== 게시판 ===");
+			System.out.println("1. 회원가입");
+			System.out.println("2. 로그인");
+			System.out.println("3. 게시글 보기");
+			System.out.println("0. 종료");
+			
+			int sel = scan.nextInt();
+			
+			if(sel == 1) {
+				MemberController.instance.join();
+			}else if(sel == 2) {
+				memberlog = MemberController.instance.login();
+				if(memberlog != null) {
+					loginMenu();
+				}
+			}else if(sel == 3) {	
+				boolean check = BoardDAO.instance.viewPostsCheck();
+				BoardController.instance.viewPosts(check);
+				
+			}else if(sel == 0) {
+				System.out.println("프로그램 종료.");
+				break;
+			}else {
+				System.out.println("잘못입력하셨습니다.");
+			}
+			
+		}
+	}
+	public void loginMenu() {
+		while(true) {
+			System.out.println(memberlog.getId()+"님 환영합니다");
+			System.out.println("1.글쓰기");
+			System.out.println("2.내 글 보기");
+			System.out.println("3.로그아웃");
+			
+			int sel = scan.nextInt();
+			
+			 if(sel == 1) {
+				BoardController.instance.writing(memberlog);
+			}else if(sel == 2) {
+				checkView();
+			}else if(sel == 3) {
+				memberlog = MemberController.instance.logout(memberlog);
+				break;
+			}else {
+				System.out.println("잘못 입력하셨습니다.");
+			}
+		}
+	}
+	
+	public void checkView() {
+		while(true) {
+			System.out.println("=== 마이페이지 ===");
+			System.out.println("1.내 글 목록보기");
+			System.out.println("2.글 수정");
+			System.out.println("3.글 삭제");
+			System.out.println("0 뒤로가기");
+			
+			int sel = scan.nextInt();
+			if(sel == 1) {
+				BoardController.instance.myViewPosts(memberlog);
+			}else if(sel == 2) {
+				BoardController.instance.update();
+			}else if(sel == 3) {
+				BoardController.instance.delete();
+			}else if(sel == 0) {
+				break;
+			}else {
+				System.out.println("잘못 입력하셨습니다.");
+			}
+		}
+		
+	}
+}

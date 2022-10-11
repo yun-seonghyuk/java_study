@@ -1,0 +1,44 @@
+package board2;
+
+import java.util.Scanner;
+
+
+public class MemberDAO {
+	int max;
+	Member[]memberList;
+	int memberCount;
+	Scanner scan = new Scanner(System.in);
+	public void init(int size) {
+		max = size;
+		memberList = new Member[max];
+		memberCount = 0;
+		
+	}
+	public Member getMember(String id) {
+		Member member = null;
+		for(int i = 0; i < memberCount; i++) {
+			if(memberList[i].getId().equals(id)) {
+				member = memberList[i];
+				break;
+			}
+		}
+		return member;
+	}
+	public boolean checkMemberIdAndPw(String id , String pw) {
+		for(int i = 0; i < memberCount; i++) {
+			if(memberList[i].getId().equals(id) &&
+					memberList[i].getPw().equals(pw)) {
+				return true;
+			}
+		}		
+		return false;
+	}
+	public boolean checkMemberID(String id) {
+		for(int i = 0; i < memberCount; i++) {
+			if(memberList[i].getId().equals(id)) {
+				return true;
+			}
+		}
+		return false;
+	}
+}

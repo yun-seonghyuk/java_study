@@ -1,0 +1,31 @@
+package ch02;
+
+public class MyArray {
+
+	int[] intArr;
+	int count;
+	
+	public int ARRAY_SIZE;
+	
+	public static final int ERROR_NUM = -999999999;
+	
+	public MyArray() {
+		count = 0;
+		ARRAY_SIZE = 10;
+		intArr = new int[ARRAY_SIZE];
+	}
+	
+	public MyArray(int size) {
+		count = 0;
+		ARRAY_SIZE = size;
+		intArr = new int[size];
+	}
+	
+	public void addElement(int num) {
+		if(count >= ARRAY_SIZE) {
+			System.out.println("not enough memory");
+			return;
+		}
+		intArr[count++] = num;
+	}
+}

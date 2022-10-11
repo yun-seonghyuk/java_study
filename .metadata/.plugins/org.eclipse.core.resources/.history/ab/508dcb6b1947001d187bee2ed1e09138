@@ -1,0 +1,36 @@
+package chapter10.question.dto;
+
+public abstract class Member implements Task{
+	private String memberId;
+	private String memberPassword;
+	private String memberName;
+
+	public Member(String memberId, String memberPassword, String memberName) {
+		this.memberId = memberId;
+		this.memberPassword = memberPassword;
+		this.memberName = memberName;
+	}
+
+	
+	public String getMemberId() {
+		return memberId;
+	}
+	public void setMemberId(String memberId) {
+		this.memberId = memberId;
+	}
+	public String getMemberPassword() {
+		return memberPassword;
+	}
+	public void setMemberPassword(String memberPassword) {
+		this.memberPassword = memberPassword;
+	}
+	public String getMemberName() {
+		return memberName;
+	}
+	public void setMemberName(String memberName) {
+		this.memberName = memberName;
+	}
+	
+	
+	
+}

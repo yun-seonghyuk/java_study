@@ -1,0 +1,67 @@
+package board2;
+
+import java.util.LinkedList;
+import java.util.Scanner;
+
+
+public class BoardDAO {
+	static public BoardDAO instance = new BoardDAO();
+	private LinkedList<Board> boardList;
+	private Scanner scan = new Scanner(System.in);
+	public void init() {
+		boardList = new LinkedList<Board>();
+	}
+
+	public void insertBoard(Board board) {
+		boardList.add(board);
+	}
+	
+	public boolean viewPostsCheck() {
+		if( boardList.size() == 0) {
+			return false;
+		}else{
+			return true;
+		}
+	}
+	public void viewPrt() {
+		for(int i = boardList.size()-1; i >= 0; i--) {
+			boardList.get(i).prt();
+		}
+	}
+	
+	public void myViewPostsPrt(Member memberlog) {
+		for(int i =  boardList.size()-1; i >= 0; i--) {
+			if(boardList.get(i).getWriter().equals(memberlog.getId())) {
+				boardList.get(i).prt();
+			}
+		}
+	}
+	
+	public boolean myViewPostsCheck(Member memberlog) {
+		boolean check = false;
+		for(int i =  boardList.size()-1; i >= 0; i--) {
+			if(boardList.get(i).getWriter().equals(memberlog.getId())) {
+				boardList.get(i).prt();
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	
+	
+	public  int boardNumCheck(int index) {
+		int num = scan.nextInt();
+		for(int i = 0; i < boardList.size(); i++) {
+			if(boardList.get(i).getBoardNum() == num) {
+				index = i;
+				break;
+			}
+		}
+		return index;
+	}
+		
+	
+
+
+}
